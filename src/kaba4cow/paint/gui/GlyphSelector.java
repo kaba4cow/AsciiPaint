@@ -1,5 +1,6 @@
 package kaba4cow.paint.gui;
 
+import kaba4cow.ascii.core.Display;
 import kaba4cow.ascii.drawing.gui.GUIFrame;
 import kaba4cow.ascii.drawing.gui.GUIText;
 import kaba4cow.ascii.input.Mouse;
@@ -32,9 +33,16 @@ public class GlyphSelector extends GUIFrame {
 	@Override
 	public void update() {
 		super.update();
+
+		if (getX() + getWidth() >= Display.getWidth() - Display.getWidth() / 4)
+			setX(Display.getWidth() - Display.getWidth() / 4 - getWidth() - 1);
+		if (getY() + getHeight() >= Display.getHeight())
+			setY(Display.getHeight() - getHeight() - 1);
+
 		int mX = Mouse.getTileX();
 		int mY = Mouse.getTileY();
-		if (wasClicked() && mX > getX() && mX < getX() + getWidth() && mY > getY() && mY < getY() + getHeight()) {
+		if (Mouse.isKeyDown(Mouse.LEFT) && wasClicked() && mX > getX() && mX < getX() + getWidth() && mY > getY()
+				&& mY < getY() + getHeight()) {
 			int x = mX - getX() - 1;
 			int y = mY - getY() - 1;
 			AsciiPaint.setGlyph(chars[x][y]);

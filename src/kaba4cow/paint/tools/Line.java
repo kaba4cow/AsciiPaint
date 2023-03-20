@@ -36,6 +36,7 @@ public class Line extends Tool {
 				int y1 = endY - AsciiPaint.getCamera().getY() - 1;
 
 				if (x0 != x1 || y0 != y1) {
+					AsciiPaint.updateImage();
 					int dx = Maths.abs(x1 - x0);
 					int dy = Maths.abs(y1 - y0);
 					int sx = x0 < x1 ? 1 : -1;

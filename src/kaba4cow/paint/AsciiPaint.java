@@ -1,6 +1,7 @@
 package kaba4cow.paint;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import kaba4cow.ascii.MainProgram;
 import kaba4cow.ascii.core.Display;
@@ -10,6 +11,7 @@ import kaba4cow.ascii.drawing.drawers.Drawer;
 import kaba4cow.ascii.drawing.gui.GUIFrame;
 import kaba4cow.ascii.input.Keyboard;
 import kaba4cow.ascii.toolbox.files.ImageFile;
+import kaba4cow.console.Console;
 import kaba4cow.console.ConsoleProgram;
 import kaba4cow.paint.gui.ColorSelector;
 import kaba4cow.paint.gui.GlyphSelector;
@@ -29,6 +31,7 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 
 	private static boolean gui = false;
 
+	private static GlyphSelector glyphSelector;
 	private static ColorSelector colorSelector;
 	private ToolFrame toolFrame;
 	private ArrayList<GUIFrame> frames;
@@ -37,6 +40,8 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 	private static Tool tool;
 	private static char glyph;
 	private static int color;
+
+	private static Stack<ImageFile> history;
 
 	public AsciiPaint() {
 		super(AsciiPaint.class, "PAINT by kaba4cow");
@@ -54,7 +59,7 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 
 		frames = new ArrayList<>();
 		frames.add(colorSelector = new ColorSelector());
-		frames.add(new GlyphSelector());
+		frames.add(glyphSelector = new GlyphSelector());
 		frames.add(toolFrame = new ToolFrame());
 
 		camera = new Camera();
@@ -77,6 +82,14 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 			return;
 		}
 
+		if (Keyboard.isKey(Keyboard.KEY_CONTROL_LEFT)) {
+			if (Keyboard.isKeyDown(Keyboard.KEY_S))
+				ImageFile.write(project, Console.getDirectory().getAbsolutePath() + "/" + projectName);
+			else if (!history.isEmpty() && Keyboard.isKeyDown(Keyboard.KEY_Z))
+				project = history.pop();
+			return;
+		}
+
 		for (String name : Tool.getTools().keySet())
 			if (Tool.getTool(name).isSelected())
 				tool = Tool.getTool(name);
@@ -89,6 +102,7 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 			if (frame.wasClicked())
 				clicked = i;
 		}
+
 		if (clicked != -1) {
 			frame = frames.remove(clicked);
 			frames.add(frame);
@@ -143,10 +157,16 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 
 	public static void openEditor() {
 		gui = true;
+		history = new Stack<>();
+		glyphSelector.setX(Display.getWidth());
+		glyphSelector.setY(0);
+		colorSelector.setX(Display.getWidth());
+		colorSelector.setY(Display.getHeight());
 	}
 
-	public static void closeEditor() {
-		gui = false;
+	public static void updateImage() {
+		if (history.isEmpty() || !history.lastElement().equals(project))
+			history.push(project.copy());
 	}
 
 	public static char getGlyph() {

@@ -22,7 +22,7 @@ public abstract class Tool {
 	public abstract void update(ImageFile image, int x, int y, char glyph, int color);
 
 	public abstract void render(char glyph, int color);
-
+	
 	public boolean isSelected() {
 		for (int i = 0; i < shortcut.length; i++)
 			if (!Keyboard.isKey(shortcut[i]))
