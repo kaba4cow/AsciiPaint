@@ -14,7 +14,7 @@ public class GlyphPicker extends Tool {
 	@Override
 	public void update(ImageFile image, int x, int y, char glyph, int color) {
 		if (Mouse.isKey(Mouse.LEFT))
-			AsciiPaint.setGlyph(image.getChar(x, y));
+			AsciiPaint.setGlyph(image.getGlyph(x, y));
 	}
 
 	@Override

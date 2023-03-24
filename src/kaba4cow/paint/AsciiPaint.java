@@ -141,9 +141,9 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 
 				if (ix < 0 || ix >= w || iy < 0 || iy >= h)
 					continue;
-				char c = project.getChar(ix, iy);
+				char c = project.getGlyph(ix, iy);
 				int color = project.getColor(ix, iy);
-				Drawer.drawChar(x, y, c, color);
+				Drawer.draw(x, y, c, color);
 			}
 		tool.render(glyph, color);
 

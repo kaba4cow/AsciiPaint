@@ -77,7 +77,7 @@ public class Line extends Tool {
 		int y1 = endY - AsciiPaint.getCamera().getY();
 
 		if (x0 == x1 && y0 == y1)
-			Drawer.drawChar(x0, y0, glyph, color);
+			Drawer.draw(x0, y0, glyph, color);
 		else {
 			int dx = Maths.abs(x1 - x0);
 			int dy = Maths.abs(y1 - y0);
@@ -85,7 +85,7 @@ public class Line extends Tool {
 			int sy = y0 < y1 ? 1 : -1;
 			int e = dx - dy;
 			int e2 = 0;
-			Drawer.drawChar(x0, y0, glyph, color);
+			Drawer.draw(x0, y0, glyph, color);
 			while (true) {
 				e2 = 2 * e;
 				if (e2 > -dy) {
@@ -96,7 +96,7 @@ public class Line extends Tool {
 					e += dx;
 					y0 += sy;
 				}
-				Drawer.drawChar(x0, y0, glyph, color);
+				Drawer.draw(x0, y0, glyph, color);
 				if (x0 == x1 && y0 == y1)
 					return;
 			}

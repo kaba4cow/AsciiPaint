@@ -15,7 +15,7 @@ public class FloodFillColor extends Tool {
 	public void update(ImageFile image, int x, int y, char glyph, int color) {
 		if (Mouse.isKeyDown(Mouse.LEFT)) {
 			AsciiPaint.updateImage();
-			image.floodFill(x, y, image.getColor(x, y), color);
+			image.floodFill(x, y, color);
 		}
 	}
 
