@@ -1,13 +1,13 @@
 package kaba4cow.paint.tools;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 
 import kaba4cow.ascii.input.Keyboard;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 
 public abstract class Tool {
 
-	private static final LinkedHashMap<String, Tool> tools = new LinkedHashMap<>();
+	private static final ArrayList<Tool> tools = new ArrayList<>();
 
 	private final String name;
 
@@ -16,13 +16,13 @@ public abstract class Tool {
 	public Tool(String name, int... shortcut) {
 		this.name = name;
 		this.shortcut = shortcut;
-		tools.put(name, this);
+		tools.add(this);
 	}
 
 	public abstract void update(ImageFile image, int x, int y, char glyph, int color);
 
 	public abstract void render(char glyph, int color);
-	
+
 	public boolean isSelected() {
 		for (int i = 0; i < shortcut.length; i++)
 			if (!Keyboard.isKey(shortcut[i]))
@@ -30,11 +30,11 @@ public abstract class Tool {
 		return true;
 	}
 
-	public static Tool getTool(String name) {
-		return tools.get(name);
+	public static Tool getTool(int index) {
+		return tools.get(index);
 	}
 
-	public static LinkedHashMap<String, Tool> getTools() {
+	public static ArrayList<Tool> getTools() {
 		return tools;
 	}
 

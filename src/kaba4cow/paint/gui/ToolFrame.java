@@ -1,12 +1,12 @@
 package kaba4cow.paint.gui;
 
-import java.util.LinkedHashMap;
-import java.util.function.Consumer;
+import java.util.ArrayList;
 
 import kaba4cow.ascii.core.Display;
 import kaba4cow.ascii.drawing.glyphs.Glyphs;
-import kaba4cow.ascii.drawing.gui.GUIButton;
 import kaba4cow.ascii.drawing.gui.GUIFrame;
+import kaba4cow.ascii.drawing.gui.GUIRadioButton;
+import kaba4cow.ascii.drawing.gui.GUIRadioPanel;
 import kaba4cow.ascii.drawing.gui.GUISeparator;
 import kaba4cow.ascii.drawing.gui.GUIText;
 import kaba4cow.paint.AsciiPaint;
@@ -18,6 +18,8 @@ public class ToolFrame extends GUIFrame {
 	private GUIText infoColor1;
 	private GUIText infoColor2;
 	private GUIText infoTool;
+
+	private GUIRadioPanel panel;
 
 	public ToolFrame() {
 		super(0, false, false);
@@ -38,14 +40,11 @@ public class ToolFrame extends GUIFrame {
 		infoColor2 = new GUIText(this, -1, builder.toString());
 		new GUISeparator(this, -1, false);
 
-		LinkedHashMap<String, Tool> tools = Tool.getTools();
-		for (String name : tools.keySet())
-			new GUIButton(this, -1, name, new Consumer<Object>() {
-				@Override
-				public void accept(Object t) {
-					AsciiPaint.setTool(tools.get(name));
-				}
-			});
+		panel = new GUIRadioPanel(this, -1, "Tools:");
+
+		ArrayList<Tool> tools = Tool.getTools();
+		for (int i = 0; i < tools.size(); i++)
+			new GUIRadioButton(panel, -1, tools.get(i).getName());
 	}
 
 	@Override
@@ -55,6 +54,10 @@ public class ToolFrame extends GUIFrame {
 		infoColor1.setText(String.format("Color: %06X", AsciiPaint.getColor()));
 		infoColor2.setColor(AsciiPaint.getColor());
 		render(Display.getWidth() - Display.getWidth() / 4, 0, Display.getWidth() / 4, Display.getHeight(), false);
+	}
+
+	public Tool getTool() {
+		return Tool.getTool(panel.getIndex());
 	}
 
 }

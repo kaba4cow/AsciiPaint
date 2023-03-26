@@ -90,9 +90,7 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 			return;
 		}
 
-		for (String name : Tool.getTools().keySet())
-			if (Tool.getTool(name).isSelected())
-				tool = Tool.getTool(name);
+		tool = toolFrame.getTool();
 
 		int clicked = -1;
 		GUIFrame frame;
