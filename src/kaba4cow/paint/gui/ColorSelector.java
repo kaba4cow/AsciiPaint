@@ -101,14 +101,12 @@ public class ColorSelector extends GUIFrame {
 		int br = (int) (0xF * brSlider.getPosition());
 		int bg = (int) (0xF * bgSlider.getPosition());
 		int bb = (int) (0xF * bbSlider.getPosition());
-		int b = Colors.create(br, bg, bb);
 
 		int fr = (int) (0xF * frSlider.getPosition());
 		int fg = (int) (0xF * fgSlider.getPosition());
 		int fb = (int) (0xF * fbSlider.getPosition());
-		int f = Colors.create(fr, fg, fb);
 
-		return Colors.combine(b, f);
+		return Colors.create(br, bg, bb, fr, fg, fb);
 	}
 
 	public void setSelectorColor(int color) {
