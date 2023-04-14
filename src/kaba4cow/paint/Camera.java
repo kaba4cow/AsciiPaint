@@ -1,7 +1,6 @@
 package kaba4cow.paint;
 
-import kaba4cow.ascii.input.Keyboard;
-import kaba4cow.ascii.input.Mouse;
+import kaba4cow.ascii.core.Input;
 
 public class Camera {
 
@@ -20,31 +19,31 @@ public class Camera {
 	}
 
 	public void update(float dt) {
-		if (Keyboard.isKey(Keyboard.KEY_C))
+		if (Input.isKey(Input.KEY_C))
 			reset();
 
-		if (Keyboard.isKey(Keyboard.KEY_W))
+		if (Input.isKey(Input.KEY_W))
 			y -= MOVE_SPEED * dt;
-		if (Keyboard.isKey(Keyboard.KEY_S))
+		if (Input.isKey(Input.KEY_S))
 			y += MOVE_SPEED * dt;
-		if (Keyboard.isKey(Keyboard.KEY_A))
+		if (Input.isKey(Input.KEY_A))
 			x -= MOVE_SPEED * dt;
-		if (Keyboard.isKey(Keyboard.KEY_D))
+		if (Input.isKey(Input.KEY_D))
 			x += MOVE_SPEED * dt;
 
-		if (Keyboard.isKey(Keyboard.KEY_SHIFT_LEFT))
-			x += SCROLL_SPEED * Mouse.getScroll();
+		if (Input.isKey(Input.KEY_SHIFT_LEFT))
+			x += SCROLL_SPEED * Input.getScroll();
 		else
-			y -= SCROLL_SPEED * Mouse.getScroll();
+			y -= SCROLL_SPEED * Input.getScroll();
 
-		int mX = Mouse.getTileX();
-		int mY = Mouse.getTileY();
+		int mX = Input.getTileX();
+		int mY = Input.getTileY();
 
-		if (Mouse.isKeyDown(Mouse.MIDDLE)) {
+		if (Input.isButtonDown(Input.MIDDLE)) {
 			drag = true;
 			dragX = (int) x + mX;
 			dragY = (int) y + mY;
-		} else if (Mouse.isKeyUp(Mouse.MIDDLE))
+		} else if (Input.isButtonUp(Input.MIDDLE))
 			drag = false;
 
 		if (drag) {
@@ -70,11 +69,11 @@ public class Camera {
 	}
 
 	public int getMouseX() {
-		return Mouse.getTileX() + (int) x;
+		return Input.getTileX() + (int) x;
 	}
 
 	public int getMouseY() {
-		return Mouse.getTileY() + (int) y;
+		return Input.getTileY() + (int) y;
 	}
 
 }

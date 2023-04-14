@@ -1,8 +1,7 @@
 package kaba4cow.paint.tools;
 
+import kaba4cow.ascii.core.Input;
 import kaba4cow.ascii.drawing.drawers.Drawer;
-import kaba4cow.ascii.input.Keyboard;
-import kaba4cow.ascii.input.Mouse;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 import kaba4cow.ascii.toolbox.maths.Maths;
 import kaba4cow.paint.AsciiPaint;
@@ -15,17 +14,17 @@ public class Line extends Tool {
 	private int endY = -1;
 
 	public Line() {
-		super("Line", Keyboard.KEY_L);
+		super("Line", Input.KEY_L);
 	}
 
 	@Override
 	public void update(ImageFile image, int x, int y, char glyph, int color) {
 		endX = x;
 		endY = y;
-		if (Mouse.isKeyDown(Mouse.RIGHT)) {
+		if (Input.isButtonDown(Input.RIGHT)) {
 			startX = -1;
 			startY = -1;
-		} else if (Mouse.isKeyDown(Mouse.LEFT)) {
+		} else if (Input.isButtonDown(Input.LEFT)) {
 			if (startX == -1 || startY == -1) {
 				startX = x;
 				startY = y;

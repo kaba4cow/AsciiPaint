@@ -1,7 +1,6 @@
 package kaba4cow.paint.tools;
 
-import kaba4cow.ascii.input.Keyboard;
-import kaba4cow.ascii.input.Mouse;
+import kaba4cow.ascii.core.Input;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 import kaba4cow.paint.AsciiPaint;
 
@@ -10,12 +9,12 @@ public class Pencil extends Tool {
 	private boolean drawing = false;
 
 	public Pencil() {
-		super("Pencil", Keyboard.KEY_P);
+		super("Pencil", Input.KEY_P);
 	}
 
 	@Override
 	public void update(ImageFile image, int x, int y, char glyph, int color) {
-		if (Mouse.isKey(Mouse.LEFT)) {
+		if (Input.isButton(Input.LEFT)) {
 			if (!drawing)
 				AsciiPaint.updateImage();
 			drawing = true;

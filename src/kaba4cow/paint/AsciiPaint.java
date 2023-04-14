@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import kaba4cow.ascii.MainProgram;
-import kaba4cow.ascii.core.Display;
 import kaba4cow.ascii.core.Engine;
+import kaba4cow.ascii.core.Input;
+import kaba4cow.ascii.core.Window;
 import kaba4cow.ascii.drawing.drawers.BoxDrawer;
 import kaba4cow.ascii.drawing.drawers.Drawer;
 import kaba4cow.ascii.drawing.gui.GUIFrame;
-import kaba4cow.ascii.input.Keyboard;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 import kaba4cow.console.Console;
 import kaba4cow.console.ConsoleProgram;
@@ -77,15 +77,15 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 	}
 
 	public void updateGUI(float dt) {
-		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+		if (Input.isKeyDown(Input.KEY_ESCAPE)) {
 			gui = false;
 			return;
 		}
 
-		if (Keyboard.isKey(Keyboard.KEY_CONTROL_LEFT)) {
-			if (Keyboard.isKeyDown(Keyboard.KEY_S))
+		if (Input.isKey(Input.KEY_CONTROL_LEFT)) {
+			if (Input.isKeyDown(Input.KEY_S))
 				ImageFile.write(project, Console.getDirectory().getAbsolutePath() + "/" + projectName);
-			else if (!history.isEmpty() && Keyboard.isKeyDown(Keyboard.KEY_Z))
+			else if (!history.isEmpty() && Input.isKeyDown(Input.KEY_Z))
 				project = history.pop();
 			return;
 		}
@@ -125,10 +125,10 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 	}
 
 	public void renderGUI() {
-		Display.setDrawCursor(true);
+		Window.setDrawCursor(true);
 
 		int width = toolFrame.getX();
-		int height = Display.getHeight();
+		int height = Window.getHeight();
 		int w = project.getWidth();
 		int h = project.getHeight();
 		BoxDrawer.drawBox(-camera.getX() - 1, -camera.getY() - 1, w + 1, h + 1, true, consoleColor);
@@ -156,10 +156,10 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 	public static void openEditor() {
 		gui = true;
 		history = new Stack<>();
-		glyphSelector.setX(Display.getWidth());
+		glyphSelector.setX(Window.getWidth());
 		glyphSelector.setY(0);
-		colorSelector.setX(Display.getWidth());
-		colorSelector.setY(Display.getHeight());
+		colorSelector.setX(Window.getWidth());
+		colorSelector.setY(Window.getHeight());
 	}
 
 	public static void updateImage() {

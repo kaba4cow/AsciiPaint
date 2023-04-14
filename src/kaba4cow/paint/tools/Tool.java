@@ -2,7 +2,7 @@ package kaba4cow.paint.tools;
 
 import java.util.ArrayList;
 
-import kaba4cow.ascii.input.Keyboard;
+import kaba4cow.ascii.core.Input;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 
 public abstract class Tool {
@@ -25,7 +25,7 @@ public abstract class Tool {
 
 	public boolean isSelected() {
 		for (int i = 0; i < shortcut.length; i++)
-			if (!Keyboard.isKey(shortcut[i]))
+			if (!Input.isKey(shortcut[i]))
 				return false;
 		return true;
 	}

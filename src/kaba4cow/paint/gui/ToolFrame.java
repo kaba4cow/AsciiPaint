@@ -2,7 +2,7 @@ package kaba4cow.paint.gui;
 
 import java.util.ArrayList;
 
-import kaba4cow.ascii.core.Display;
+import kaba4cow.ascii.core.Window;
 import kaba4cow.ascii.drawing.glyphs.Glyphs;
 import kaba4cow.ascii.drawing.gui.GUIFrame;
 import kaba4cow.ascii.drawing.gui.GUIRadioButton;
@@ -53,7 +53,7 @@ public class ToolFrame extends GUIFrame {
 		infoGlyph.setText("Glyph: " + AsciiPaint.getGlyph());
 		infoColor1.setText(String.format("Color: %06X", AsciiPaint.getColor()));
 		infoColor2.setColor(AsciiPaint.getColor());
-		render(Display.getWidth() - Display.getWidth() / 4, 0, Display.getWidth() / 4, Display.getHeight(), false);
+		render(Window.getWidth() - Window.getWidth() / 4, 0, Window.getWidth() / 4, Window.getHeight(), false);
 	}
 
 	public Tool getTool() {

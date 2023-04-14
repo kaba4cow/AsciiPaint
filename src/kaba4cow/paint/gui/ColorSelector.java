@@ -2,7 +2,7 @@ package kaba4cow.paint.gui;
 
 import java.util.function.Consumer;
 
-import kaba4cow.ascii.core.Display;
+import kaba4cow.ascii.core.Window;
 import kaba4cow.ascii.drawing.glyphs.Glyphs;
 import kaba4cow.ascii.drawing.gui.GUIButton;
 import kaba4cow.ascii.drawing.gui.GUIFrame;
@@ -82,10 +82,10 @@ public class ColorSelector extends GUIFrame {
 	public void update() {
 		super.update();
 
-		if (getX() + getWidth() >= Display.getWidth() - Display.getWidth() / 4)
-			setX(Display.getWidth() - Display.getWidth() / 4 - getWidth() - 1);
-		if (getY() + getHeight() >= Display.getHeight())
-			setY(Display.getHeight() - getHeight() - 1);
+		if (getX() + getWidth() >= Window.getWidth() - Window.getWidth() / 4)
+			setX(Window.getWidth() - Window.getWidth() / 4 - getWidth() - 1);
+		if (getY() + getHeight() >= Window.getHeight())
+			setY(Window.getHeight() - getHeight() - 1);
 	}
 
 	@Override
