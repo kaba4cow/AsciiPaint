@@ -3,12 +3,12 @@ package kaba4cow.paint.gui;
 import java.util.ArrayList;
 
 import kaba4cow.ascii.core.Window;
-import kaba4cow.ascii.drawing.glyphs.Glyphs;
-import kaba4cow.ascii.drawing.gui.GUIFrame;
-import kaba4cow.ascii.drawing.gui.GUIRadioButton;
-import kaba4cow.ascii.drawing.gui.GUIRadioPanel;
-import kaba4cow.ascii.drawing.gui.GUISeparator;
-import kaba4cow.ascii.drawing.gui.GUIText;
+import kaba4cow.ascii.drawing.Glyphs;
+import kaba4cow.ascii.gui.GUIFrame;
+import kaba4cow.ascii.gui.GUIRadioButton;
+import kaba4cow.ascii.gui.GUIRadioPanel;
+import kaba4cow.ascii.gui.GUISeparator;
+import kaba4cow.ascii.gui.GUIText;
 import kaba4cow.paint.AsciiPaint;
 import kaba4cow.paint.tools.Tool;
 

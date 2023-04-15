@@ -3,12 +3,12 @@ package kaba4cow.paint.gui;
 import java.util.function.Consumer;
 
 import kaba4cow.ascii.core.Window;
-import kaba4cow.ascii.drawing.glyphs.Glyphs;
-import kaba4cow.ascii.drawing.gui.GUIButton;
-import kaba4cow.ascii.drawing.gui.GUIFrame;
-import kaba4cow.ascii.drawing.gui.GUISeparator;
-import kaba4cow.ascii.drawing.gui.GUISlider;
-import kaba4cow.ascii.drawing.gui.GUIText;
+import kaba4cow.ascii.drawing.Glyphs;
+import kaba4cow.ascii.gui.GUIButton;
+import kaba4cow.ascii.gui.GUIFrame;
+import kaba4cow.ascii.gui.GUISeparator;
+import kaba4cow.ascii.gui.GUISlider;
+import kaba4cow.ascii.gui.GUIText;
 import kaba4cow.ascii.toolbox.Colors;
 import kaba4cow.paint.AsciiPaint;
 

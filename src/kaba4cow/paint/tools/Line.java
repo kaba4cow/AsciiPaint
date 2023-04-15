@@ -1,7 +1,7 @@
 package kaba4cow.paint.tools;
 
 import kaba4cow.ascii.core.Input;
-import kaba4cow.ascii.drawing.drawers.Drawer;
+import kaba4cow.ascii.drawing.Drawer;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 import kaba4cow.ascii.toolbox.maths.Maths;
 import kaba4cow.paint.AsciiPaint;

@@ -7,9 +7,9 @@ import kaba4cow.ascii.MainProgram;
 import kaba4cow.ascii.core.Engine;
 import kaba4cow.ascii.core.Input;
 import kaba4cow.ascii.core.Window;
-import kaba4cow.ascii.drawing.drawers.BoxDrawer;
-import kaba4cow.ascii.drawing.drawers.Drawer;
-import kaba4cow.ascii.drawing.gui.GUIFrame;
+import kaba4cow.ascii.drawing.BoxDrawer;
+import kaba4cow.ascii.drawing.Drawer;
+import kaba4cow.ascii.gui.GUIFrame;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 import kaba4cow.console.Console;
 import kaba4cow.console.ConsoleProgram;
@@ -125,8 +125,6 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 	}
 
 	public void renderGUI() {
-		Window.setDrawCursor(true);
-
 		int width = toolFrame.getX();
 		int height = Window.getHeight();
 		int w = project.getWidth();

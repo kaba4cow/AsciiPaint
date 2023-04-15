@@ -2,8 +2,8 @@ package kaba4cow.paint.gui;
 
 import kaba4cow.ascii.core.Input;
 import kaba4cow.ascii.core.Window;
-import kaba4cow.ascii.drawing.gui.GUIFrame;
-import kaba4cow.ascii.drawing.gui.GUIText;
+import kaba4cow.ascii.gui.GUIFrame;
+import kaba4cow.ascii.gui.GUIText;
 import kaba4cow.paint.AsciiPaint;
 
 public class GlyphSelector extends GUIFrame {
