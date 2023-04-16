@@ -1,6 +1,7 @@
 package kaba4cow.paint.tools;
 
 import kaba4cow.ascii.core.Input;
+import kaba4cow.ascii.core.Window;
 import kaba4cow.ascii.toolbox.files.ImageFile;
 import kaba4cow.paint.AsciiPaint;
 
@@ -13,7 +14,7 @@ public class ColorPicker extends Tool {
 	@Override
 	public void update(ImageFile image, int x, int y, char glyph, int color) {
 		if (Input.isButton(Input.LEFT))
-			AsciiPaint.setColor(image.getColor(x, y));
+			AsciiPaint.setColor(Window.getColor(Input.getTileX(), Input.getTileY()));
 	}
 
 	@Override

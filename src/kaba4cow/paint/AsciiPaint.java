@@ -104,15 +104,12 @@ public class AsciiPaint extends ConsoleProgram implements MainProgram {
 		if (clicked != -1) {
 			frame = frames.remove(clicked);
 			frames.add(frame);
-		} else if (!GUIFrame.framesClicked()) {
-			camera.update(dt);
-
-			int x = camera.getMouseX();
-			int y = camera.getMouseY();
-
-			if (x >= 0 && x < project.getWidth() && y >= 0 && y < project.getHeight())
-				tool.update(project, x, y, glyph, color);
 		}
+
+		camera.update(dt);
+		int x = camera.getMouseX();
+		int y = camera.getMouseY();
+		tool.update(project, x, y, glyph, color);
 	}
 
 	@Override
